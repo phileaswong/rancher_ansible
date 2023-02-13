@@ -32,7 +32,7 @@ def check_drain_status(name, api_url, headers, validate_certs=True):
     node = get_node(name, api_url, headers, validate_certs)
     if node['state'] == 'drained':
         return 1
-    elif node['state'] == 'draining':
+    elif node['state'] == 'draining' or node['state'] == 'active' or node['state'] == 'cordon':
         return 0
     else:
         return -1
